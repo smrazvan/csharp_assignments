@@ -1,5 +1,6 @@
 ﻿using Blogger_server.Entities;
 using ConsoleApp2.Exceptions;
+using ConsoleApp2.Types;
 using System.Collections;
 namespace ConsoleApp2
 {
@@ -7,29 +8,41 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            Post myStory = new Post() { };
+            //generic custom array
+            FixedList<int> grades = new FixedList<int>(10);
+            grades.SetItem(2, 10);
+            grades.SetItem(3, 6);
+            grades.SwapIndexWithIndex(2, 3);
 
-            try
-            {
-                Post result = CreatePost(null);
-            } catch(ArgumentNullException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Console.WriteLine(grades.GetItem(3));
 
-            try
-            {
-                bool registrationResult = RegisterUsername("ionel");
-            } catch(UserUsernameDuplicateException ex)
-            {
-                Console.WriteLine("this username already exists");
-            } catch(Exception ex)
-            {
-                Console.WriteLine("something went wrong.");
-            } finally
-            {
-                Console.WriteLine("Operation completed");
-            }
+            grades.SwapValueWithValue(10, 6);
+
+            Console.WriteLine(grades.GetItem(3));
+            //EXCEPTIONS
+            //Post myStory = new Post() { };
+
+            //try
+            //{
+            //    Post result = CreatePost(null);
+            //} catch(ArgumentNullException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            //try
+            //{
+            //    bool registrationResult = RegisterUsername("ionel");
+            //} catch(UserUsernameDuplicateException ex)
+            //{
+            //    Console.WriteLine("this username already exists");
+            //} catch(Exception ex)
+            //{
+            //    Console.WriteLine("something went wrong.");
+            //} finally
+            //{
+            //    Console.WriteLine("Operation completed");
+            //}
 
         }
 
